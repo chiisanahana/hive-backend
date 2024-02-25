@@ -1,0 +1,1551 @@
+2024-02-24 23:45:54.332 +07 [24380] LOG:  listening on IPv6 address "::1", port 5432
+2024-02-24 23:45:54.333 +07 [24380] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-02-24 23:45:54.527 +07 [23628] LOG:  database system was shut down at 2024-02-24 23:40:59 +07
+2024-02-24 23:45:55.006 +07 [24380] LOG:  database system is ready to accept connections
+2024-02-25 00:29:44.185 +07 [41752] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 00:33:21.691 +07 [6588] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 00:33:38.326 +07 [28336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 00:33:43.891 +07 [11988] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 00:36:44.498 +07 [35608] ERROR:  syntax error at or near "crypt" at character 1
+2024-02-25 00:36:44.498 +07 [35608] STATEMENT:  crypt('password', gen_salt('bf'))
+2024-02-25 00:36:52.253 +07 [35608] ERROR:  function gen_salt(unknown) does not exist at character 26
+2024-02-25 00:36:52.253 +07 [35608] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2024-02-25 00:36:52.253 +07 [35608] STATEMENT:  SELECT crypt('password', gen_salt('bf'))
+2024-02-25 01:33:22.229 +07 [17544] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:40:42.206 +07 [27308] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:41:02.859 +07 [31692] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:41:31.812 +07 [43632] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:41:36.336 +07 [15412] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:41:42.653 +07 [44092] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:41:57.922 +07 [39076] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:50:43.637 +07 [43412] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 01:59:54.546 +07 [36844] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:01:17.272 +07 [32824] ERROR:  null value in column "created_datetime" violates not-null constraint
+2024-02-25 02:01:17.272 +07 [32824] DETAIL:  Failing row contains (1, null, null, lipsum@mail.com, $2a$06$otmj1wHbUByQqCHfa3Ob1.AaC.So0kYLeF2V4K95XLA1lwJUUMqxu, null, null, null, null, null, null, null, null, null, null, null, null, null).
+2024-02-25 02:01:17.272 +07 [32824] STATEMENT:  INSERT INTO provider(email, password) VALUES ('lipsum@mail.com', crypt('bcabca01', gen_salt('bf')));
+2024-02-25 02:03:20.809 +07 [39496] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:06:06.184 +07 [32824] ERROR:  null value in column "color" violates not-null constraint
+2024-02-25 02:06:06.184 +07 [32824] DETAIL:  Failing row contains (1, Brand Mobil Baru, 2023, null, null, null, null, 500000, null, null, A, null, null, 2).
+2024-02-25 02:06:06.184 +07 [32824] STATEMENT:  INSERT INTO car(provider_id, brand, year, price, status) VALUES (2, 'Brand Mobil Baru', 2023, 500000, 'A');
+2024-02-25 02:07:39.772 +07 [32824] ERROR:  syntax error at or near "," at character 180
+2024-02-25 02:07:39.772 +07 [32824] STATEMENT:  INSERT INTO car(provider_id, brand, year, color, seat, vehicle_no, transmission, price, status, created_datetime) VALUES (2, 'Brand Mobil Baru', 2023, 'Colorful', 4, 'A 123 BCD', ,'Automatic', 500000, 'A');
+2024-02-25 02:08:00.694 +07 [32824] ERROR:  INSERT has more target columns than expressions at character 97
+2024-02-25 02:08:00.694 +07 [32824] STATEMENT:  INSERT INTO car(provider_id, brand, year, color, seat, vehicle_no, transmission, price, status, created_datetime) VALUES (2, 'Brand Mobil Baru', 2023, 'Colorful', 4, 'A 123 BCD', 'Automatic', 500000, 'A');
+2024-02-25 02:08:19.636 +07 [32824] ERROR:  null value in column "updated_datetime" violates not-null constraint
+2024-02-25 02:08:19.636 +07 [32824] DETAIL:  Failing row contains (2, Brand Mobil Baru, 2023, Colorful, 4, A 123 BCD, Automatic, 500000, null, null, A, 2024-02-25 02:08:19.635878+07, null, 2).
+2024-02-25 02:08:19.636 +07 [32824] STATEMENT:  INSERT INTO car(provider_id, brand, year, color, seat, vehicle_no, transmission, price, status, created_datetime) VALUES (2, 'Brand Mobil Baru', 2023, 'Colorful', 4, 'A 123 BCD', 'Automatic', 500000, 'A', NOW());
+2024-02-25 02:08:47.904 +07 [20136] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:08:53.731 +07 [18688] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:11:22.349 +07 [20528] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:12:42.413 +07 [20588] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:12:50.281 +07 [21372] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:13:00.784 +07 [31728] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:32:02.237 +07 [7088] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:32:06.666 +07 [30348] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:34:22.760 +07 [39040] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:35:00.547 +07 [10500] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:35:04.893 +07 [15624] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:35:10.212 +07 [32996] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:35:41.815 +07 [27248] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:35:56.116 +07 [34232] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:39:28.611 +07 [2140] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:44:38.219 +07 [42200] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:45:01.842 +07 [12968] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:46:40.930 +07 [42708] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:47:21.034 +07 [45788] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:47:29.918 +07 [35188] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:48:07.102 +07 [29336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:48:29.036 +07 [49080] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:48:40.718 +07 [30692] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:49:55.984 +07 [38184] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:50:04.435 +07 [1356] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:51:03.683 +07 [39892] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 02:53:21.219 +07 [33316] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:03:14.780 +07 [13804] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:03:42.567 +07 [14380] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:06:05.884 +07 [49856] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:06:28.182 +07 [30804] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:07:17.475 +07 [6356] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:07:30.943 +07 [51284] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:07:54.692 +07 [39708] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:09:47.592 +07 [32628] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:09:51.921 +07 [47092] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:09:55.982 +07 [4888] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:10:11.700 +07 [50120] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:10:17.066 +07 [35176] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:12:23.071 +07 [50352] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:13:07.437 +07 [27004] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:13:11.840 +07 [11700] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:13:15.878 +07 [36040] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:13:48.596 +07 [4976] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:14:39.409 +07 [30956] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 03:14:44.769 +07 [22696] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:06:16.747 +07 [38564] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:06:42.856 +07 [50884] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:07:31.577 +07 [44196] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:07:47.889 +07 [25284] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:07:53.407 +07 [4892] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:08:43.815 +07 [17220] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:08:54.487 +07 [44568] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:11:07.650 +07 [46544] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:11:13.342 +07 [48152] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:11:28.480 +07 [41800] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:11:32.663 +07 [40172] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:11:55.742 +07 [17020] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:12:35.420 +07 [5404] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:12:54.616 +07 [35884] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:14:06.918 +07 [39108] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:15:53.741 +07 [34588] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:16:14.205 +07 [16224] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:16:32.756 +07 [23904] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:16:41.788 +07 [39820] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:17:27.201 +07 [4264] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:17:34.911 +07 [51968] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:17:40.359 +07 [44568] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:17:56.499 +07 [43132] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:20:51.270 +07 [45044] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:20:55.946 +07 [38188] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:23:58.204 +07 [35428] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:24:03.860 +07 [23016] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:24:09.278 +07 [49668] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:29:46.750 +07 [53116] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:30:07.234 +07 [44552] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:30:28.848 +07 [43400] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:31:01.783 +07 [8304] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:31:40.909 +07 [23336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:31:47.660 +07 [50300] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:31:56.223 +07 [48652] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:32:20.951 +07 [25420] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:32:29.908 +07 [29788] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:32:39.661 +07 [27100] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:32:47.114 +07 [28340] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 12:34:41.499 +07 [17868] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:12:17.278 +07 [35884] ERROR:  syntax error at or near "password" at character 60
+2024-02-25 15:12:17.278 +07 [35884] STATEMENT:  CREATE PROCEDURE insert_user_provider(
+		email varchar(50)
+		password varchar(100)
+	)
+	LANGUAGE plpgsql
+	AS $$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		
+		COMMIT;
+	END;$$;
+2024-02-25 15:13:19.420 +07 [35884] ERROR:  syntax error at or near "pwd" at character 60
+2024-02-25 15:13:19.420 +07 [35884] STATEMENT:  CREATE PROCEDURE insert_user_provider(
+		email varchar(50)
+		pwd varchar(100)
+	)
+	LANGUAGE plpgsql
+	AS $$
+	BEGIN
+		INSERT INTO provider (email, pwd, created_datetime)
+		VALUES (
+			email,
+			crypt(pwd, gen_salt('bf')),
+			NOW()
+		)
+		
+		COMMIT;
+	END;$$;
+2024-02-25 15:13:45.199 +07 [35884] ERROR:  syntax error at or near "COMMIT" at character 240
+2024-02-25 15:13:45.199 +07 [35884] STATEMENT:  CREATE PROCEDURE insert_user_provider(
+		email varchar(50),
+		password varchar(100)
+	)
+	LANGUAGE plpgsql
+	AS $$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		
+		COMMIT;
+	END;$$;
+2024-02-25 15:20:20.319 +07 [27888] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:27:28.699 +07 [52416] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:27:45.342 +07 [42920] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:27:52.297 +07 [24740] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:28:16.756 +07 [44912] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:45:24.377 +07 [29904] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:49:50.448 +07 [45360] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:49:55.269 +07 [51840] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:52:06.065 +07 [16548] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:52:28.236 +07 [21572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:53:14.552 +07 [9848] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:53:18.777 +07 [32] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:53:53.010 +07 [11800] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:54:10.154 +07 [10536] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:55:09.408 +07 [30908] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:55:47.575 +07 [28052] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:55:53.137 +07 [35188] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:56:17.588 +07 [46252] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:56:21.919 +07 [41464] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:56:34.733 +07 [34380] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:56:51.104 +07 [22120] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:56:56.748 +07 [47452] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:57:01.132 +07 [24572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 15:59:42.817 +07 [30924] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:02:02.815 +07 [49928] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:02:17.176 +07 [12172] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:02:32.910 +07 [52500] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:02:38.458 +07 [40160] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:02:49.871 +07 [17036] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:03:01.159 +07 [50244] ERROR:  insert_user_provider(unknown, unknown) is a procedure at character 15
+2024-02-25 16:03:01.159 +07 [50244] HINT:  To call a procedure, use CALL.
+2024-02-25 16:03:01.159 +07 [50244] STATEMENT:  SELECT * FROM insert_user_provider('lalalalala@mail.com','bcabca01')
+2024-02-25 16:04:39.659 +07 [25296] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:04:50.766 +07 [17836] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:09:03.644 +07 [14772] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:09:09.273 +07 [5288] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:09:44.083 +07 [22900] ERROR:  insert_user_provider(unknown, unknown) is a procedure at character 15
+2024-02-25 16:09:44.083 +07 [22900] HINT:  To call a procedure, use CALL.
+2024-02-25 16:09:44.083 +07 [22900] STATEMENT:  SELECT * FROM insert_user_provider('lalalalala@mail.com','bcabca01')
+2024-02-25 16:10:36.670 +07 [32480] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:10:44.238 +07 [46004] ERROR:  syntax error at end of input at character 26
+2024-02-25 16:10:44.238 +07 [46004] STATEMENT:  CALL insert_user_provider
+2024-02-25 16:14:16.745 +07 [35772] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:14:46.736 +07 [33532] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:15:20.261 +07 [29752] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:17:56.153 +07 [19164] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:18:02.212 +07 [27552] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:18:10.062 +07 [24244] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:19:13.952 +07 [46468] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:19:19.516 +07 [35708] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:19:37.182 +07 [5828] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:19:50.742 +07 [49296] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:20:00.437 +07 [35320] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:20:38.335 +07 [47144] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:23:15.227 +07 [39876] ERROR:  syntax error at or near "OUTPUT" at character 450
+2024-02-25 16:23:15.227 +07 [39876] STATEMENT:  -- PROCEDURE: public.insert_user_provider(character varying, character varying)
+	
+	-- DROP PROCEDURE IF EXISTS public.insert_user_provider(character varying, character varying);
+	
+	CREATE OR REPLACE PROCEDURE public.insert_user_provider(
+		email character varying,
+		password character varying)
+	LANGUAGE 'plpgsql'
+	AS $BODY$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		);
+		OUTPUT INSERTED.*
+			
+	END;
+	$BODY$;
+	
+	ALTER PROCEDURE public.insert_user_provider(character varying, character varying)
+	    OWNER TO postgres;
+	
+2024-02-25 16:23:20.390 +07 [39876] ERROR:  syntax error at or near "OUTPUT" at character 449
+2024-02-25 16:23:20.390 +07 [39876] STATEMENT:  -- PROCEDURE: public.insert_user_provider(character varying, character varying)
+	
+	-- DROP PROCEDURE IF EXISTS public.insert_user_provider(character varying, character varying);
+	
+	CREATE OR REPLACE PROCEDURE public.insert_user_provider(
+		email character varying,
+		password character varying)
+	LANGUAGE 'plpgsql'
+	AS $BODY$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		OUTPUT INSERTED.*
+			
+	END;
+	$BODY$;
+	
+	ALTER PROCEDURE public.insert_user_provider(character varying, character varying)
+	    OWNER TO postgres;
+	
+2024-02-25 16:25:54.430 +07 [52396] ERROR:  query has no destination for result data
+2024-02-25 16:25:54.430 +07 [52396] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 3 at SQL statement
+2024-02-25 16:25:54.430 +07 [52396] STATEMENT:  CALL insert_user_provider('lala@mail.com', 'bcabca01')
+2024-02-25 16:26:19.546 +07 [50804] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:26:24.714 +07 [25296] ERROR:  query has no destination for result data
+2024-02-25 16:26:24.714 +07 [25296] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 3 at SQL statement
+2024-02-25 16:26:24.714 +07 [25296] STATEMENT:  CALL insert_user_provider('lala@mail.com', 'bcabca01')
+2024-02-25 16:26:38.622 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 16:26:38.622 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 3 at SQL statement
+2024-02-25 16:26:38.622 +07 [32824] STATEMENT:  call insert_user_provider('trying@mail.com', 'bcabca01');
+2024-02-25 16:29:52.082 +07 [39876] ERROR:  "_provider" is not a known variable at character 474
+2024-02-25 16:29:52.082 +07 [39876] STATEMENT:  -- PROCEDURE: public.insert_user_provider(character varying, character varying)
+	
+	-- DROP PROCEDURE IF EXISTS public.insert_user_provider(character varying, character varying);
+	
+	CREATE OR REPLACE PROCEDURE public.insert_user_provider(
+		email character varying,
+		password character varying)
+	LANGUAGE 'plpgsql'
+	AS $BODY$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		RETURNING * AS _new INTO _provider; return _provider;
+			
+	END;
+	$BODY$;
+	
+	ALTER PROCEDURE public.insert_user_provider(character varying, character varying)
+	    OWNER TO postgres;
+	
+2024-02-25 16:31:09.080 +07 [39876] ERROR:  syntax error at or near "COMMIT" at character 449
+2024-02-25 16:31:09.080 +07 [39876] STATEMENT:  -- PROCEDURE: public.insert_user_provider(character varying, character varying)
+	
+	-- DROP PROCEDURE IF EXISTS public.insert_user_provider(character varying, character varying);
+	
+	CREATE OR REPLACE PROCEDURE public.insert_user_provider(
+		email character varying,
+		password character varying)
+	LANGUAGE 'plpgsql'
+	AS $BODY$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		COMMIT;
+			
+	END;
+	$BODY$;
+	
+	ALTER PROCEDURE public.insert_user_provider(character varying, character varying)
+	    OWNER TO postgres;
+	
+2024-02-25 16:31:30.972 +07 [50476] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:31:43.158 +07 [17120] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:32:04.417 +07 [22300] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 16:38:35.870 +07 [4512] ERROR:  cannot change routine kind
+2024-02-25 16:38:35.870 +07 [4512] DETAIL:  "insert_user_provider" is a procedure.
+2024-02-25 16:38:35.870 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider
+	LANGUAGE 'plpgsql'
+	AS $$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		);
+		COMMIT;
+			
+	END;
+	$$;
+	
+2024-02-25 16:38:54.401 +07 [32824] ERROR:  insert_user_provider(unknown, unknown) is not a procedure at character 6
+2024-02-25 16:38:54.401 +07 [32824] HINT:  To call a function, use SELECT.
+2024-02-25 16:38:54.401 +07 [32824] STATEMENT:  call insert_user_provider('trying@mail.com', 'bcabca01');
+2024-02-25 16:39:03.245 +07 [32824] ERROR:  invalid transaction termination
+2024-02-25 16:39:03.245 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 9 at COMMIT
+2024-02-25 16:39:03.245 +07 [32824] STATEMENT:  SELECT insert_user_provider('trying@mail.com', 'bcabca01');
+2024-02-25 16:42:47.096 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 16:42:47.096 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 3 at SQL statement
+2024-02-25 16:42:47.096 +07 [32824] STATEMENT:  SELECT insert_user_provider('tryagain@mail.com', 'bcabca01');
+2024-02-25 16:44:52.584 +07 [4512] ERROR:  syntax error at or near "DECLARE" at character 137
+2024-02-25 16:44:52.584 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider
+	LANGUAGE 'plpgsql'
+	DECLARE new_id BIGINT
+	AS $$
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		SELECT * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:45:13.726 +07 [4512] ERROR:  syntax error at or near "BEGIN" at character 158
+2024-02-25 16:45:13.726 +07 [4512] CONTEXT:  invalid type name "BIGINT
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id"
+2024-02-25 16:45:13.726 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		SELECT * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:45:49.445 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 16:45:49.445 +07 [32824] HINT:  If you want to discard the results of a SELECT, use PERFORM instead.
+2024-02-25 16:45:49.445 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 10 at SQL statement
+2024-02-25 16:45:49.445 +07 [32824] STATEMENT:  SELECT insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 16:46:27.283 +07 [4512] ERROR:  function result type must be specified
+2024-02-25 16:46:27.283 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:46:35.765 +07 [4512] ERROR:  syntax error at or near "provider" at character 109
+2024-02-25 16:46:35.765 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS TABLE provider
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:49:14.254 +07 [4512] ERROR:  syntax error at or near "provider" at character 109
+2024-02-25 16:49:14.254 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS TABLE provider.*
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:49:29.440 +07 [4512] ERROR:  syntax error at or near "." at character 117
+2024-02-25 16:49:29.440 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS TABLE(provider.*)
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:49:33.797 +07 [4512] ERROR:  syntax error at or near ")" at character 117
+2024-02-25 16:49:33.797 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS TABLE(provider)
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:49:59.515 +07 [4512] ERROR:  syntax error at or near "." at character 117
+2024-02-25 16:49:59.515 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS TABLE(provider.email, provider.password)
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:50:16.482 +07 [4512] ERROR:  cannot change return type of existing function
+2024-02-25 16:50:16.482 +07 [4512] HINT:  Use DROP FUNCTION insert_user_provider(character varying,character varying) first.
+2024-02-25 16:50:16.482 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS TABLE(email VARCHAR, password VARCHAR)
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:51:43.669 +07 [4512] ERROR:  syntax error at or near "BIGINT" at character 107
+2024-02-25 16:51:43.669 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS _id BIGINT
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO _id;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:52:17.617 +07 [4512] ERROR:  "_id" is not a known variable at character 312
+2024-02-25 16:52:17.617 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS void
+	LANGUAGE 'plpgsql'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO _id;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:56:19.283 +07 [4512] ERROR:  language "SQL" does not exist
+2024-02-25 16:56:19.283 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS provider
+	LANGUAGE 'SQL'
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	
+2024-02-25 16:56:24.625 +07 [4512] ERROR:  syntax error at or near "plpgsql" at character 1
+2024-02-25 16:56:24.625 +07 [4512] STATEMENT:  plpgsql
+2024-02-25 16:59:31.760 +07 [4512] ERROR:  syntax error at or near "LANGUAGE" at character 367
+2024-02-25 16:59:31.760 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$;
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 16:59:35.820 +07 [4512] ERROR:  cannot change return type of existing function
+2024-02-25 16:59:35.820 +07 [4512] HINT:  Use DROP FUNCTION insert_user_provider(character varying,character varying) first.
+2024-02-25 16:59:35.820 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END;
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 16:59:42.040 +07 [4512] ERROR:  cannot change return type of existing function
+2024-02-25 16:59:42.040 +07 [4512] HINT:  Use DROP FUNCTION insert_user_provider(character varying,character varying) first.
+2024-02-25 16:59:42.040 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) RETURNING provider_id INTO new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 17:00:14.808 +07 [32824] ERROR:  control reached end of function without RETURN
+2024-02-25 17:00:14.808 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying)
+2024-02-25 17:00:14.808 +07 [32824] STATEMENT:  SELECT insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:01:13.668 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:01:13.668 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:01:13.668 +07 [32824] STATEMENT:  SELECT insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:02:05.822 +07 [32824] ERROR:  control reached end of function without RETURN
+2024-02-25 17:02:05.822 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying)
+2024-02-25 17:02:05.822 +07 [32824] STATEMENT:  SELECT insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:02:26.293 +07 [4512] ERROR:  syntax error at or near "RETURNING" at character 273
+2024-02-25 17:02:26.293 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) ;
+		RETURNING provider_id INTO new_id;
+		SELECT * FROM provider WHERE provider_id = new_id;
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 17:02:34.419 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:02:34.419 +07 [32824] HINT:  If you want to discard the results of a SELECT, use PERFORM instead.
+2024-02-25 17:02:34.419 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 11 at SQL statement
+2024-02-25 17:02:34.419 +07 [32824] STATEMENT:  SELECT insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:03:03.708 +07 [4512] ERROR:  cannot change return type of existing function
+2024-02-25 17:03:03.708 +07 [4512] HINT:  Use DROP FUNCTION insert_user_provider(character varying,character varying) first.
+2024-02-25 17:03:03.708 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		) ;
+		--RETURNING provider_id INTO new_id;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 17:05:54.624 +07 [4512] ERROR:  syntax error at or near "RETURNING" at character 278
+2024-02-25 17:05:54.624 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		);
+		RETURNING *;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 17:06:00.428 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:06:00.428 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:06:00.428 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:09:00.104 +07 [32824] ERROR:  column "id" does not exist at character 134
+2024-02-25 17:09:00.104 +07 [32824] QUERY:  INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		RETURNING id
+2024-02-25 17:09:00.104 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:09:00.104 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:09:11.404 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:09:11.404 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:09:11.404 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:11:22.880 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:11:22.880 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:11:22.880 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:11:38.394 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:11:38.394 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:11:38.394 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:13:22.994 +07 [4512] ERROR:  syntax error at or near "BIGINT" at character 139
+2024-02-25 17:13:22.994 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		RETURNING provider_id AS new_id;
+		PERFORM * FROM provider WHERE provider_id = new_id;
+	END
+	$$
+	LANGUAGE SQL;
+	
+2024-02-25 17:15:00.607 +07 [4512] ERROR:  column "new_id" does not exist at character 44
+2024-02-25 17:15:00.607 +07 [4512] STATEMENT:  SELECT * FROM provider WHERE provider_id = new_id
+2024-02-25 17:17:45.938 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:17:45.938 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:17:45.938 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:20:23.910 +07 [4512] ERROR:  syntax error at or near "BIGINT" at character 110
+2024-02-25 17:20:23.910 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS new_id BIGINT
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		RETURNING provider_id AS new_id;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+		RETURN QUERY (SELECT * FROM provider WHERE provider_id = new_id);
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 17:21:20.273 +07 [4512] ERROR:  syntax error at or near ";" at character 117
+2024-02-25 17:21:20.273 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS SETOF provider;
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		RETURNING provider_id AS new_id;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+		RETURN QUERY (SELECT * FROM provider WHERE provider_id = new_id);
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 17:21:30.249 +07 [32824] ERROR:  query has no destination for result data
+2024-02-25 17:21:30.249 +07 [32824] CONTEXT:  PL/pgSQL function insert_user_provider(character varying,character varying) line 4 at SQL statement
+2024-02-25 17:21:30.249 +07 [32824] STATEMENT:  SELECT * FROM insert_user_provider('tryagainlagi@mail.com', 'bcabca01');
+2024-02-25 17:23:14.257 +07 [4512] ERROR:  cannot use RETURN QUERY in a non-SETOF function at character 359
+2024-02-25 17:23:14.257 +07 [4512] STATEMENT:  CREATE OR REPLACE FUNCTION insert_user_provider(
+		email VARCHAR(50),
+		password VARCHAR(100)
+	)
+	RETURNS BIGINT
+	AS $$
+	DECLARE new_id BIGINT;
+	BEGIN
+		INSERT INTO provider (email, password, created_datetime)
+		VALUES (
+			email,
+			crypt(password, gen_salt('bf')),
+			NOW()
+		)
+		RETURNING provider_id AS new_id;
+	-- 	PERFORM * FROM provider WHERE provider_id = new_id;
+		RETURN QUERY (SELECT * FROM provider WHERE provider_id = new_id);
+	END
+	$$
+	LANGUAGE 'plpgsql';
+	
+2024-02-25 18:45:20.921 +07 [23188] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:45:42.858 +07 [23336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:46:01.572 +07 [11460] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:46:27.417 +07 [29788] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:46:32.685 +07 [46260] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:46:48.265 +07 [40976] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:46:56.625 +07 [34576] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:47:02.981 +07 [29008] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:47:19.942 +07 [28424] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:47:26.477 +07 [7748] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:47:31.507 +07 [18844] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:47:56.925 +07 [23212] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:48:02.394 +07 [12460] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:48:09.822 +07 [13596] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:48:18.216 +07 [32228] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:48:24.442 +07 [15564] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:48:36.625 +07 [46352] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:49:00.046 +07 [28372] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:50:07.384 +07 [50284] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:51:50.139 +07 [46924] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 18:54:50.883 +07 [32824] ERROR:  column "created_datetime" of relation "customer" does not exist at character 39
+2024-02-25 18:54:50.883 +07 [32824] STATEMENT:  INSERT INTO customer(email, password, created_datetime) VALUES ('customer1@mail.com', crypt('bcabca01', gen_salt('bf')), NOW());
+2024-02-25 18:55:56.058 +07 [32824] ERROR:  null value in column "name" violates not-null constraint
+2024-02-25 18:55:56.058 +07 [32824] DETAIL:  Failing row contains (1, customer1@mail.com, null, $2a$06$KrJKNgDvpJP62an.o1l3Du5OqgQ7fpYQROcf1iItlLWJwZpvStqlq, null, null, null, null, 2024-02-25 18:55:56.053377+07, null).
+2024-02-25 18:55:56.058 +07 [32824] STATEMENT:  INSERT INTO customer(email, password, created_datetime) VALUES ('customer1@mail.com', crypt('bcabca01', gen_salt('bf')), NOW());
+2024-02-25 19:06:41.163 +07 [32824] ERROR:  syntax error at or near "SELECT" at character 25
+2024-02-25 19:06:41.163 +07 [32824] STATEMENT:  SELECT * FROM provider
+	
+	SELECT * FROM customer
+2024-02-25 19:15:39.070 +07 [39864] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:15:57.506 +07 [24028] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:16:03.109 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.109 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" WHERE "customer"."customer_id" = 2 LIMIT 21
+2024-02-25 19:16:03.217 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.217 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" LIMIT 21
+2024-02-25 19:16:03.218 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.218 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" LIMIT 21
+2024-02-25 19:16:03.219 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.219 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" WHERE "customer"."customer_id" = 2 LIMIT 21
+2024-02-25 19:16:03.219 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.219 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" WHERE "customer"."customer_id" = 2 LIMIT 21
+2024-02-25 19:16:03.220 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.220 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" WHERE "customer"."customer_id" = 2 LIMIT 21
+2024-02-25 19:16:03.221 +07 [43352] ERROR:  column customer.approved_by does not exist at character 255
+2024-02-25 19:16:03.221 +07 [43352] STATEMENT:  SELECT "customer"."customer_id", "customer"."email", "customer"."name", "customer"."password", "customer"."id_card", "customer"."license_card", "customer"."phone_number", "customer"."status", "customer"."created_datetime", "customer"."updated_datetime", "customer"."approved_by", "customer"."approved_datetime" FROM "customer" WHERE "customer"."customer_id" = 2 LIMIT 21
+2024-02-25 19:22:18.356 +07 [28680] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:23:19.369 +07 [9336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:23:32.087 +07 [50284] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:24:47.567 +07 [7252] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:26:44.302 +07 [52656] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:27:09.382 +07 [8288] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:28:49.366 +07 [13776] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:53:59.337 +07 [50884] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:54:17.572 +07 [53604] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:55:59.777 +07 [6264] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:56:15.337 +07 [8832] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:57:43.734 +07 [14156] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:58:24.601 +07 [10212] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:58:29.252 +07 [53964] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:58:41.297 +07 [49668] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:58:45.877 +07 [46372] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:59:01.155 +07 [53532] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 19:59:19.113 +07 [40744] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:01:16.590 +07 [54060] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:01:21.229 +07 [30888] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:01:45.465 +07 [1572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:02:06.587 +07 [51616] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:02:11.242 +07 [44644] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:02:30.066 +07 [52700] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:02:34.725 +07 [52608] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:02:39.249 +07 [26292] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:02:43.900 +07 [51152] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:03:00.489 +07 [1260] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:03:19.312 +07 [44312] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:03:28.286 +07 [26288] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:03:39.574 +07 [48912] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:03:49.833 +07 [51648] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:03:57.874 +07 [20588] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:04:49.062 +07 [32248] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:05:32.779 +07 [27200] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:05:47.588 +07 [39928] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:06:02.119 +07 [23572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:07:01.454 +07 [24848] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:07:14.624 +07 [34924] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:07:24.772 +07 [11304] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:08:19.272 +07 [47372] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:08:32.767 +07 [53260] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:08:37.521 +07 [44140] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:08:44.434 +07 [52336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:08:58.910 +07 [51220] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:09:05.824 +07 [45908] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:09:27.032 +07 [16188] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:10:11.906 +07 [27468] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:10:48.549 +07 [40304] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:10:59.765 +07 [16680] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:11:08.032 +07 [19824] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:11:45.074 +07 [9612] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:12:07.531 +07 [51192] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:12:11.945 +07 [31968] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:12:18.569 +07 [53416] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:12:24.010 +07 [44592] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:12:44.088 +07 [36396] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:13:37.333 +07 [36888] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:13:42.199 +07 [46572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:13:57.570 +07 [30696] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:14:12.403 +07 [48692] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:14:39.156 +07 [4956] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:15:10.277 +07 [50204] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:15:15.936 +07 [18364] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:15:55.038 +07 [26756] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:16:24.389 +07 [51792] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:16:48.985 +07 [50132] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:17:11.888 +07 [40156] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:17:26.456 +07 [12692] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:19:12.174 +07 [20120] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:21:02.628 +07 [36912] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:21:11.868 +07 [31320] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:21:17.448 +07 [36312] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:21:24.000 +07 [39000] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:21:34.637 +07 [45048] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:22:02.410 +07 [7940] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:22:08.015 +07 [13508] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:22:19.389 +07 [22436] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:23:15.048 +07 [37816] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:24:25.168 +07 [53852] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:24:30.818 +07 [22124] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:25:26.534 +07 [23240] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:27:17.257 +07 [36208] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:28:27.588 +07 [52728] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:29:51.266 +07 [52432] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:31:24.256 +07 [50832] ERROR:  column "car_type" contains null values
+2024-02-25 20:31:24.256 +07 [50832] STATEMENT:  ALTER TABLE IF EXISTS public.car
+	    ALTER COLUMN car_type SET NOT NULL;
+2024-02-25 20:31:28.288 +07 [50832] ERROR:  column "car_type" contains null values
+2024-02-25 20:31:28.288 +07 [50832] STATEMENT:  ALTER TABLE IF EXISTS public.car
+	    ALTER COLUMN car_type SET NOT NULL;
+2024-02-25 20:32:05.513 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.513 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car"
+2024-02-25 20:32:05.530 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.530 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.532 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.532 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.532 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.532 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.532 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.532 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.533 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.533 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.533 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.533 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.533 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.533 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.534 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.534 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.534 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.534 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:05.535 +07 [15780] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:05.535 +07 [15780] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:28.242 +07 [28632] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:32:50.808 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.808 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car"
+2024-02-25 20:32:50.827 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.827 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.829 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.829 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.829 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.829 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.830 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.830 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.830 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.830 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.831 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.831 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.831 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.831 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.831 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.831 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.832 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.832 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:32:50.832 +07 [28452] ERROR:  column car.updated_by does not exist at character 300
+2024-02-25 20:32:50.832 +07 [28452] STATEMENT:  SELECT "car"."car_id", "car"."provider_id", "car"."brand", "car"."car_type", "car"."year", "car"."color", "car"."seat", "car"."vehicle_no", "car"."transmission", "car"."price", "car"."deposit", "car"."description", "car"."status", "car"."rating", "car"."created_datetime", "car"."updated_datetime", "car"."updated_by" FROM "car" LIMIT 21
+2024-02-25 20:35:45.952 +07 [43608] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:35:52.458 +07 [39408] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:35:56.854 +07 [53104] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:01.064 +07 [32776] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:16.500 +07 [39284] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:27.538 +07 [27504] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:33.021 +07 [38208] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:42.851 +07 [26344] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:52.857 +07 [43352] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:36:59.579 +07 [44804] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:37:10.710 +07 [46572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:37:16.267 +07 [7872] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:37:21.822 +07 [39268] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:37:26.056 +07 [51928] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:37:32.821 +07 [42064] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:37:41.510 +07 [46332] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:38:20.476 +07 [22304] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:38:25.095 +07 [51128] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:38:31.777 +07 [44144] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:38:37.216 +07 [36040] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:38:45.199 +07 [9392] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:38:50.766 +07 [46968] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:39:27.300 +07 [53008] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:39:45.528 +07 [32336] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:39:54.408 +07 [48212] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:40:00.080 +07 [37352] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:40:04.609 +07 [22936] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:40:12.414 +07 [46636] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:40:32.278 +07 [48316] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:44:59.614 +07 [32364] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:45:05.262 +07 [53864] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:45:09.825 +07 [23428] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:45:19.006 +07 [47956] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:52:45.694 +07 [49208] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:52:54.754 +07 [24264] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:53:48.934 +07 [45376] ERROR:  column admin.created_datetime does not exist at character 104
+2024-02-25 20:53:48.934 +07 [45376] STATEMENT:  SELECT "admin"."admin_id", "admin"."email", "admin"."password", "admin"."employee_id", "admin"."name", "admin"."created_datetime", "admin"."updated_datetime" FROM "admin" LIMIT 1000
+2024-02-25 20:53:49.120 +07 [45376] ERROR:  column admin.created_datetime does not exist at character 104
+2024-02-25 20:53:49.120 +07 [45376] STATEMENT:  SELECT "admin"."admin_id", "admin"."email", "admin"."password", "admin"."employee_id", "admin"."name", "admin"."created_datetime", "admin"."updated_datetime" FROM "admin" LIMIT 21
+2024-02-25 20:53:49.121 +07 [45376] ERROR:  column admin.created_datetime does not exist at character 104
+2024-02-25 20:53:49.121 +07 [45376] STATEMENT:  SELECT "admin"."admin_id", "admin"."email", "admin"."password", "admin"."employee_id", "admin"."name", "admin"."created_datetime", "admin"."updated_datetime" FROM "admin" LIMIT 21
+2024-02-25 20:53:49.121 +07 [45376] ERROR:  column admin.created_datetime does not exist at character 104
+2024-02-25 20:53:49.121 +07 [45376] STATEMENT:  SELECT "admin"."admin_id", "admin"."email", "admin"."password", "admin"."employee_id", "admin"."name", "admin"."created_datetime", "admin"."updated_datetime" FROM "admin" LIMIT 21
+2024-02-25 20:53:49.122 +07 [45376] ERROR:  column admin.created_datetime does not exist at character 104
+2024-02-25 20:53:49.122 +07 [45376] STATEMENT:  SELECT "admin"."admin_id", "admin"."email", "admin"."password", "admin"."employee_id", "admin"."name", "admin"."created_datetime", "admin"."updated_datetime" FROM "admin" LIMIT 21
+2024-02-25 20:54:46.761 +07 [10192] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:58:09.938 +07 [50560] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:58:30.264 +07 [42384] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:59:02.876 +07 [3296] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 20:59:52.124 +07 [33592] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:00:06.786 +07 [54044] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:00:13.609 +07 [50224] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:00:22.332 +07 [47320] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:00:39.057 +07 [49740] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:00:45.835 +07 [584] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:01:21.274 +07 [31724] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:01:26.997 +07 [43288] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:02:39.896 +07 [34396] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:02:54.003 +07 [39828] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:02:58.574 +07 [36852] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:03:08.581 +07 [21968] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:07:38.957 +07 [48328] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:08:03.282 +07 [51432] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:08:07.813 +07 [36940] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:08:25.528 +07 [40132] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:08:35.535 +07 [14720] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:08:51.718 +07 [33120] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:09:05.124 +07 [35132] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:09:23.835 +07 [7768] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:09:57.647 +07 [48300] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:10:15.030 +07 [2256] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:11:25.786 +07 [47168] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:12:02.995 +07 [36156] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:12:11.286 +07 [36564] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:12:23.793 +07 [48180] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:12:44.282 +07 [53616] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:13:30.826 +07 [50224] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:13:44.668 +07 [31604] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:14:11.857 +07 [36996] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:14:46.296 +07 [35048] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:14:54.150 +07 [34272] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:15:01.049 +07 [31600] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:15:19.258 +07 [13028] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:15:25.077 +07 [21416] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:15:33.783 +07 [40452] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:15:46.321 +07 [52684] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:15:53.081 +07 [28628] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:16:58.692 +07 [49172] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:17:06.576 +07 [26556] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:17:16.469 +07 [35920] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:17:23.491 +07 [47068] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:18:07.439 +07 [46720] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:18:17.683 +07 [3296] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:19:00.406 +07 [9784] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:19:24.395 +07 [11212] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:20:44.040 +07 [49252] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:21:03.663 +07 [29620] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:21:35.974 +07 [33152] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:21:57.062 +07 [53480] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:22:22.328 +07 [38052] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:23:24.815 +07 [2852] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:23:42.943 +07 [30676] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:24:02.818 +07 [30484] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:24:33.107 +07 [25196] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:24:38.735 +07 [37104] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:24:45.352 +07 [38996] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:24:49.933 +07 [50676] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:25:03.333 +07 [15564] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:25:15.988 +07 [46896] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:25:47.755 +07 [44144] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:25:58.573 +07 [39572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:26:12.350 +07 [41388] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:26:22.830 +07 [52588] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:26:28.711 +07 [53760] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:26:39.638 +07 [32056] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:28:15.385 +07 [40864] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:28:30.071 +07 [12188] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:28:37.877 +07 [18036] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:28:56.111 +07 [5584] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:29:06.313 +07 [2368] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2024-02-25 21:29:12.122 +07 [44828] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	

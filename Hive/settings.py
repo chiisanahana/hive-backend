@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-rgupknc(y2oqs29h$cx54q%m+ejslb%978(xfrw0e9_hbw$+r6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     
     'base.apps.BaseConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Hive.urls'
@@ -80,20 +83,15 @@ WSGI_APPLICATION = 'Hive.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'yrqkfzcd', 
-        'USER': 'yrqkfzcd', 
-        'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
-        'HOST': 'rosie.db.elephantsql.com',
+        # 'USER': 'yrqkfzcd', 
+        'USER': 'postgres', 
+        # 'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
+        'PASSWORD': '',
+        # 'HOST': 'rosie.db.elephantsql.com',
+        'HOST': 'localhost',
         'PORT': '5432',
-        
-        # 'NAME': 'test_local', 
-        # 'USER': 'postgres', 
-        # 'PASSWORD': '12345678',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
     }
 }
 
