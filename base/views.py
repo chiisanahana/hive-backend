@@ -20,27 +20,6 @@ class ProviderViewSet(viewsets.ModelViewSet):
 class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-    
-    # def create(self, validated_data):
-    #     serializer = self.get_serializer(data=self.request.data)
-    #     print(serializer)
-    #     print("===============================")
-    #     car_provider_id = self.request.data['provider']
-    #     provider = Provider.objects.filter(id=car_provider_id).first()
-    #     print(provider)
-    #     print("===============================")
-        
-    #     if serializer.is_valid() :
-    #         data = serializer.validated_data
-    #         print(data)
-    #         print("===============================")
-    #         serializer.save(Provider=provider)
-    #         headers = self.get_success_headers(serializer.data)
-    #         return Response(serializer.data, 201, headers=headers)
-    #     else :
-    #         print (serializer.errors)
-    #         return Response(None, 500)
-        # return super().create(validated_data)
 
 class CarFilesViewSet(viewsets.ModelViewSet):
     queryset = CarFile.objects.all()
@@ -79,7 +58,7 @@ class ReportViewSet(viewsets.ModelViewSet):
     serializer_class = ReportSerializer
 
 
-# Helper function
+### Helper function
 def dictfetchall(cursor):
     "Return all rows from a cursor as a dict"
     columns = [col[0] for col in cursor.description]
@@ -89,9 +68,9 @@ def dictfetchall(cursor):
     ]
 
 
-### API for check 
+### API for check user email is exists or not
 @api_view(['POST'])
-def check_email(request, **kwargs):
+def is_email_exists(request, **kwargs):
     email = request.data['email']
     user_type = kwargs['user']
 
@@ -108,11 +87,11 @@ def check_email(request, **kwargs):
         print(email_count)
         
     if (email_count == 0) :
-        return Response(True)
-    else :
         return Response(False)
+    else :
+        return Response(True)
 
-
+### API for customer login
 @api_view(['POST'])
 def customer_login (request):
     email = request.data['email']

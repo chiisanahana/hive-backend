@@ -22,7 +22,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api/', include('rest_framework.urls', namespace="rest_framework")),
     path('schema/', get_schema_view()),
-    path('<str:user>/check-email', views.check_email),
+    path('<str:user>/check-email', views.is_email_exists),
     path('customer/login', views.customer_login),
 ]
 
