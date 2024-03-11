@@ -85,12 +85,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'yrqkfzcd', 
-        'USER': 'yrqkfzcd', 
-        # 'USER': 'postgres', 
-        'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
-        # 'PASSWORD': '',
-        'HOST': 'rosie.db.elephantsql.com',
-        # 'HOST': 'localhost',
+        # 'USER': 'yrqkfzcd', 
+        'USER': 'postgres', 
+        # 'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
+        'PASSWORD': '',
+        # 'HOST': 'rosie.db.elephantsql.com',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
