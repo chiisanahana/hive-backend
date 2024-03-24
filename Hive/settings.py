@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
+    'daphne',
+    
     'django.contrib.staticfiles',
     
     'base.apps.BaseConfig',
@@ -76,7 +79,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Hive.wsgi.application'
+# untuk websocket
+ASGI_APPLICATION = 'Hive.asgi.application'
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -84,14 +94,18 @@ WSGI_APPLICATION = 'Hive.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'yrqkfzcd', 
+        # 'NAME': 'yrqkfzcd', 
+        'NAME': 'pgadmin', 
         # 'USER': 'yrqkfzcd', 
-        'USER': 'postgres', 
+        # 'USER': 'postgres', 
+        'USER': 'pgadmin', 
         # 'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
-        'PASSWORD': '',
+        'PASSWORD': 'wronged-graveyard-deserving-expansive-judicial',
         # 'HOST': 'rosie.db.elephantsql.com',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': 's1.arville.net',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
+        'PORT': '7898',
     }
 }
 

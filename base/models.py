@@ -20,11 +20,12 @@ class Admin(models.Model):
  
 class Customer(models.Model):
     id = models.BigAutoField(primary_key=True)
-    email = models.CharField(max_length=200)
+    email = models.CharField(max_length=200, null=True)
     name = models.CharField(null=True, max_length=200)
-    password = models.CharField(max_length=200)
+    password = models.CharField(max_length=200, null=True)
     id_card = models.CharField(null=True, max_length=200)
     license_card = models.CharField(null=True, max_length=200)
+    profile_picture = models.CharField(null=True, max_length=200)
     phone_number = models.CharField(null=True, max_length=200)
     status = models.CharField(null=True, max_length=200)
     created_datetime = models.DateTimeField(auto_now_add=True)
@@ -51,6 +52,7 @@ class Provider(models.Model):
     bank_account_number = models.CharField(max_length=50,null=True, blank=True)
     bank_account_name = models.CharField(max_length=50,null=True, blank=True)
     id_card = models.CharField(max_length=50,null=True, blank=True)
+    profile_picture = models.CharField(null=True, max_length=200)
     phone_number = models.CharField(max_length=20,null=True, blank=True)
     status = models.CharField(max_length=15,null=True, blank=True)
     balance = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
@@ -74,13 +76,17 @@ class Car(models.Model):
     year = models.CharField(max_length=4)
     color = models.CharField(max_length=20)
     seat = models.PositiveIntegerField()
+    count = models.PositiveIntegerField()
     vehicle_no = models.CharField(max_length=15)
     transmission = models.CharField(max_length=10)
-    price = models.DecimalField(max_digits=6, decimal_places=0)
-    deposit = models.DecimalField(max_digits=6, decimal_places=0, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
+    deposit = models.DecimalField(max_digits=10, decimal_places=0, null=True)
+    fuel = models.CharField(max_length=10)
     description = models.TextField(null=True)
     status = models.CharField(max_length=15, null=True, default="A")
-    rating = models.DecimalField(max_digits=2, decimal_places=1, default=0)
+    isdelete = models.CharField(max_length=15, null=True, default="0")
+    rating = models.DecimalField(max_digits=10, decimal_places=1, default=0)
+    order_count = models.IntegerField(null=True, default=0)
     created_datetime = models.DateTimeField(auto_now_add=True)
     updated_datetime = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(Admin, related_name="cars", on_delete=models.SET_NULL, null=True, db_column="updated_by")
@@ -143,11 +149,11 @@ class Order(models.Model):
     pickup_location = models.CharField(max_length=100)
     return_location = models.CharField(max_length=100)
     status = models.CharField(max_length=15)
-    transport_fee = models.DecimalField(max_digits=6, decimal_places=0, default=0)
-    damage_fee = models.DecimalField(max_digits=6, decimal_places=0, default=0)
-    late_fee = models.DecimalField(max_digits=6, decimal_places=0, default=0)
+    transport_fee = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
+    damage_fee = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
+    late_fee = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
     review = models.TextField(null=True, blank=True)
-    rating = models.PositiveIntegerField()
+    rating = models.PositiveIntegerField(null=True)
     created_datetime = models.DateTimeField(auto_now_add=True)
     updated_datetime = models.DateTimeField(auto_now=True)
    
@@ -160,10 +166,10 @@ class Order(models.Model):
    
 class Payment(models.Model):
     id = models.BigAutoField(primary_key=True)
-    order = models.ForeignKey(Order, related_name="payments", on_delete=models.SET_NULL, null=True, db_column="order_id")
+    order_id = models.ForeignKey(Order, related_name="payments", on_delete=models.SET_NULL, null=True, db_column="order_id")
     invoice_no = models.CharField(max_length=100)
     payment_method = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=6, decimal_places=0, null=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=0, null=True)
     transaction_datetime = models.DateTimeField(auto_now_add=True)
     deposit_return_time = models.DateTimeField(null=True)
     refund_datetime = models.DateTimeField(null=True)
@@ -196,6 +202,8 @@ class Wishlist(models.Model):
     customer_id = models.ForeignKey(Customer, related_name="wishlists", on_delete=models.CASCADE, db_column="customer_id")
     start_date = models.DateField()
     end_date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
    
     class Meta:
         db_table = "wishlist"
@@ -207,7 +215,7 @@ class Wishlist(models.Model):
 class Withdrawal(models.Model):
     id = models.BigAutoField(primary_key=True)
     provider_id = models.ForeignKey(Provider, related_name="withdrawals", on_delete=models.CASCADE, db_column="provider_id")
-    amount = models.DecimalField(max_digits=6, decimal_places=0)
+    amount = models.DecimalField(max_digits=10, decimal_places=0)
     withdraw_datetime = models.DateTimeField(auto_now_add=True)
    
     class Meta:
