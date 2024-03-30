@@ -28,7 +28,7 @@ class CarSerializer(serializers.ModelSerializer):
     car_files = CarFileSerializer(queryset, many=True, read_only=True)
     
     provider_id = serializers.PrimaryKeyRelatedField(
-        queryset=Provider.objects.all(), source='provider', write_only=True)
+        queryset=Provider.objects.all(), source='provider', write_only=True, required=False)
     
     class Meta:
         model = Car
@@ -54,9 +54,9 @@ class OrderSerializer(serializers.ModelSerializer):
     payments = PaymentSerializer(queryset, many=True, read_only=True)
     
     car_id = serializers.PrimaryKeyRelatedField(
-        queryset=Car.objects.all(), source='car', write_only=True)
+        queryset=Car.objects.all(), source='car', write_only=True, required=False)
     customer_id = serializers.PrimaryKeyRelatedField(
-        queryset=Customer.objects.all(), source='customer', write_only=True)
+        queryset=Customer.objects.all(), source='customer', write_only=True, required=False)
 
     class Meta:
         model = Order
@@ -77,6 +77,9 @@ class WithdrawalSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ChatSerializer(serializers.ModelSerializer):
+    # sender = serializers.SlugRelatedField(many=False, slug_field='username', queryset=UserProfile.objects.all())
+    # receiver = serializers.SlugRelatedField(many=False, slug_field='username', queryset=UserProfile.objects.all())
+    
     class Meta:
         model = Chat
         fields = '__all__'

@@ -44,8 +44,8 @@ class Provider(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100,null=True, blank=True)
     trading_name = models.CharField(max_length=100,null=True, blank=True)
-    email = models.EmailField()
-    password = models.CharField(max_length=100)
+    email = models.EmailField(null=True)
+    password = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=150,null=True, blank=True)
     city = models.CharField(max_length=50,null=True, blank=True)
     province = models.CharField(max_length=50,null=True, blank=True)
@@ -71,21 +71,21 @@ class Provider(models.Model):
 class Car(models.Model):
     id = models.BigAutoField(auto_created=True, primary_key=True)
     provider = models.ForeignKey(Provider, related_name="cars", on_delete=models.CASCADE, db_column="provider_id") #when Provider deleted all children will be deleted
-    brand = models.CharField(max_length=20)
-    car_type = models.CharField(max_length=20)
-    year = models.CharField(max_length=4)
-    color = models.CharField(max_length=20)
-    seat = models.PositiveIntegerField()
-    count = models.PositiveIntegerField()
-    vehicle_no = models.CharField(max_length=15)
-    transmission = models.CharField(max_length=10)
-    price = models.DecimalField(max_digits=10, decimal_places=0)
+    brand = models.CharField(max_length=20, null=True)
+    car_type = models.CharField(max_length=20, null=True)
+    year = models.CharField(max_length=4, null=True)
+    color = models.CharField(max_length=20, null=True)
+    seat = models.PositiveIntegerField(null=True)
+    click_count = models.PositiveIntegerField(null=True, default=0)
+    vehicle_no = models.CharField(max_length=15, null=True)
+    transmission = models.CharField(max_length=10, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=0, null=True, default=0)
     deposit = models.DecimalField(max_digits=10, decimal_places=0, null=True)
-    fuel = models.CharField(max_length=10)
+    fuel = models.CharField(max_length=10, null=True)
     description = models.TextField(null=True)
     status = models.CharField(max_length=15, null=True, default="A")
     isdelete = models.CharField(max_length=15, null=True, default="0")
-    rating = models.DecimalField(max_digits=10, decimal_places=1, default=0)
+    rating = models.DecimalField(max_digits=10, decimal_places=1, default=0, null=True)
     order_count = models.IntegerField(null=True, default=0)
     created_datetime = models.DateTimeField(auto_now_add=True)
     updated_datetime = models.DateTimeField(auto_now=True)
@@ -112,7 +112,7 @@ class CarFile(models.Model):
            
     def car_file(self):
         return CarFile
- 
+
 class ChatRoom(models.Model):
     id = models.BigAutoField(primary_key=True)
     provider = models.ForeignKey(Provider, related_name="chat_rooms", on_delete=models.SET_NULL, null=True, db_column="provider_id")
@@ -124,31 +124,35 @@ class ChatRoom(models.Model):
 
     def chat_room(self):
         return ChatRoom
-   
+
 class Chat(models.Model):
     id = models.BigAutoField(primary_key=True)
-    chat_room_id = models.ForeignKey(ChatRoom, related_name="chats", on_delete=models.CASCADE, db_column="chat_room_id")
-    message = models.TextField()
+    chat_room_id = models.ForeignKey(ChatRoom, related_name="chat", on_delete=models.CASCADE, db_column="chat_room_id")
+    # sender = models.CharField(max_length=200)
+    # receiver = models.CharField(max_length=200)
+    provider_id = models.ForeignKey(Provider, related_name="provider", on_delete=models.CASCADE, db_column="provider_id", null=True)
+    customer_id = models.ForeignKey(Customer, related_name="customer", on_delete=models.CASCADE, db_column="customer_id", null=True)
+    message = models.TextField(null=True)
     file_path = models.CharField(max_length=200, null=True)
-    is_read = models.BooleanField(default=False)
+    is_read = models.BooleanField(default=False, null=True)
     created_datetime = models.DateTimeField(auto_now_add=True)
    
     class Meta:
         db_table = "chat"
         managed = False
    
-    def chat(self):
-        return Chat
+    def __str__(self):
+        return f"{self.sender} - {self.receiver}"
  
 class Order(models.Model):
     id = models.BigAutoField(primary_key=True)
     car = models.ForeignKey(Car, related_name="orders", on_delete=models.SET_NULL, null=True, db_column="car_id")
     customer = models.ForeignKey(Customer, related_name="orders", on_delete=models.SET_NULL, null=True, db_column="customer_id")
-    start_datetime = models.DateTimeField()
-    end_datetime = models.DateTimeField()
-    pickup_location = models.CharField(max_length=100)
-    return_location = models.CharField(max_length=100)
-    status = models.CharField(max_length=15)
+    start_datetime = models.DateTimeField(null=True)
+    end_datetime = models.DateTimeField(null=True)
+    pickup_location = models.CharField(max_length=100, null=True)
+    return_location = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=15, null=True)
     transport_fee = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
     damage_fee = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
     late_fee = models.DecimalField(max_digits=10, decimal_places=0, default=0, null=True)
@@ -227,10 +231,12 @@ class Withdrawal(models.Model):
     
 class Notification(models.Model):
     id = models.BigAutoField(primary_key=True)
-    isread = models.CharField(max_length=15)
-    user_id = models.BigIntegerField()
-    type = models.CharField(max_length=30)
-    message = models.TextField()
+    isread = models.CharField(max_length=15, null=True)
+    # user_id = models.BigIntegerField()
+    # type = models.CharField(max_length=30)
+    provider_id = models.ForeignKey(Provider, related_name="providers", on_delete=models.CASCADE, db_column="provider_id", null=True)
+    customer_id = models.ForeignKey(Customer, related_name="customers", on_delete=models.CASCADE, db_column="customer_id", null=True)
+    message = models.TextField(null=True)
     created_datetime = models.DateTimeField(auto_now_add=True)
     
     class Meta:

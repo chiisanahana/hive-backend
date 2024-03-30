@@ -26,26 +26,35 @@ SECRET_KEY = 'django-insecure-rgupknc(y2oqs29h$cx54q%m+ejslb%978(xfrw0e9_hbw$+r6
 DEBUG = True
 
 ALLOWED_HOSTS=['*']
+# ALLOWED_HOSTS=['hivebe.my.id']
 CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    
     'daphne',
-    
     'django.contrib.staticfiles',
     
     'base.apps.BaseConfig',
     'rest_framework',
     'corsheaders',
 ]
+
+ASGI_APPLICATION = 'Hive.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -94,18 +103,18 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'yrqkfzcd', 
-        'NAME': 'pgadmin', 
-        # 'USER': 'yrqkfzcd', 
+        'NAME': 'yrqkfzcd', 
+        # 'NAME': 'pgadmin', 
+        'USER': 'yrqkfzcd', 
         # 'USER': 'postgres', 
-        'USER': 'pgadmin', 
-        # 'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
-        'PASSWORD': 'wronged-graveyard-deserving-expansive-judicial',
-        # 'HOST': 'rosie.db.elephantsql.com',
-        'HOST': 's1.arville.net',
+        # 'USER': 'pgadmin', 
+        'PASSWORD': '3uq7MEi8VDCwQj_DSPz3-0jmLv8b8sOa',
+        # 'PASSWORD': 'wronged-graveyard-deserving-expansive-judicial',
+        'HOST': 'rosie.db.elephantsql.com',
+        # 'HOST': 's1.arville.net',
         # 'HOST': 'localhost',
-        # 'PORT': '5432',
-        'PORT': '7898',
+        'PORT': '5432',
+        # 'PORT': '7898',
     }
 }
 
@@ -145,6 +154,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_URL = '/'
+# STATIC_ROOT= '/home/hivebemy/hive_backend/hive/public/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

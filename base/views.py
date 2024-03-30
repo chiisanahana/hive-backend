@@ -3,9 +3,12 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db import connection
+from django.db.models import Subquery, OuterRef, Q
 from .models import *
 from .serializers import *
 import json
@@ -49,10 +52,10 @@ class OrderViewSet(viewsets.ModelViewSet):
         
         provider = self.request.query_params.get('provider_id')
         if provider is not None:
-            queryset = queryset.filter(provider_id = provider)
+            car = Car.objects.all().filter(provider_id = provider)
+            queryset = queryset.filter(car_id__in=car)    
         return queryset
     
-
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
@@ -70,11 +73,11 @@ class WishlistViewSet(viewsets.ModelViewSet):
 class WithdrawalViewSet(viewsets.ModelViewSet):
     queryset = Withdrawal.objects.all()
     serializer_class = WithdrawalSerializer
-
+    
 class ChatRoomViewSet(viewsets.ModelViewSet):
     queryset = ChatRoom.objects.all()
     serializer_class = ChatRoomSerializer
-
+        
 class ChatViewSet(viewsets.ModelViewSet):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
@@ -86,7 +89,6 @@ class ReportViewSet(viewsets.ModelViewSet):
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
-
 
 ### Helper function
 def dictfetchall(cursor):
@@ -142,7 +144,7 @@ def customer_login (request):
             "customer": CustomerSerializer(customer[0]).data,
             "provider": ProviderSerializer(provider[0]).data if provider else None
         })
-    
+
 ### API for provider login
 @api_view(['POST'])
 def provider_login (request):
@@ -196,9 +198,9 @@ def customer_check_order_schedule (request):
     # transmission = request.data['transmission']
     # fuel = request.data['fuel']
     
-    query = "SELECT * FROM public.car WHERE isdelete = %s AND provider_id IN (SELECT id FROM provider WHERE LOWER(province) = %s AND LOWER(city) = %s) AND id NOT IN (SELECT car_id FROM public.order WHERE status < %s AND (start_datetime BETWEEN %s AND %s OR end_datetime BETWEEN %s AND %s))"
+    query = "SELECT * FROM public.car WHERE isdelete = %s AND status = %s AND provider_id IN (SELECT id FROM provider WHERE LOWER(province) = %s AND LOWER(city) = %s) AND id NOT IN (SELECT car_id FROM public.order WHERE status < %s AND (start_datetime BETWEEN %s AND %s OR end_datetime BETWEEN %s AND %s))"
     
-    variable = ['0', province, city, '5',start_date, end_date, start_date, end_date]
+    variable = ['0', 'A', province, city, '5',start_date, end_date, start_date, end_date]
     
     # if start_price is not None:
     #     temp = " AND price BETWEEN %s AND %s"
@@ -274,9 +276,21 @@ def customer_check_order_schedule (request):
     
     with connection.cursor() as cursor:
         cursor.execute(query, variable)
-        order = dictfetchall(cursor)
+        cars = dictfetchall(cursor)
         
-        return Response(order)
+        for car in cars:
+            try:
+                cf = CarFile.objects.filter(car_id=car.get('id'))
+            except CarFile.DoesNotExist:
+                cf = None
+                
+            if cf != None:
+                serializer = CarFileSerializer(cf, many=True)
+                car['car_files'] = serializer.data
+            else:
+                car['car_files'] = []
+                        
+    return Response(cars)
     
 ### API for customer_dropdown_location
 @api_view(['GET'])
@@ -286,7 +300,8 @@ def customer_dropdown_location (request):
         location = json.loads(json.dumps(cursor.fetchall()))
         location = [item for sublist in location for item in sublist]
         return Response(location)
-    
+
+### API for rating order and calc rating in car
 @api_view(['POST'])
 def rate_order(request):
     id = request.data['id']
@@ -303,5 +318,17 @@ def rate_order(request):
     print('car', car)
     return Response(OrderSerializer(Order.objects.get(id=id)).data)
     
-def test_notif(request):
-    return render(request, 'notif_index.html')
+def test_notif(request, room_name):
+    return render(request, 'notif_index.html', {
+        'room_name': room_name
+    })
+
+def room(request, room_name):
+    return render(request, 'chat/chatroom.html', {
+        'room_name' : room_name
+    })
+
+### Dummy endpoint for quasar upload
+@api_view(['POST'])
+def image_upload(request):
+    return Response(status=201)
